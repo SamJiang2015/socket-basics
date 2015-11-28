@@ -23,9 +23,16 @@ io.on('connection', function(socket) {
 		'message',
 		// the object is the payload to be sent
 		{
-			text: "Welcome to the chat application!"
-		}
-	)
+			text: 'Welcome to the chat application!',
+			sender: 'server'
+		});
+
+	socket.broadcast.emit(
+		'message', {
+			text: 'Another client joined',
+			sender: 'server'
+		});
+
 });
 
 http.listen(PORT, function() {
