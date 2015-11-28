@@ -11,7 +11,7 @@ io.on('connection', function(socket) {
 
 
 	socket.on('message', function(message) {
-		console.log('Message received: ' + message.text);
+		//console.log('Message received: ' + message.text);
 
 		// this sends the message to every live connection BUT the sender of the message
 		// use io.emit() to send the message to every connection including the sender
