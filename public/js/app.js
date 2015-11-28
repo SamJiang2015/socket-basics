@@ -4,10 +4,14 @@ socket.on('connect', function () {
 	console.log('connected to socket.io server');
 });
 
+// socket.on('message', function (message) {
+// 	jQuery('.messages').append('<p>'+message.text+'<p>');
+// });
+
 // handles submitting of new message
 var $form = jQuery('#message-form');
 var $message_box = $form.find('input[name=message]');
-var $log_box = $form.find('textarea[name=log]');
+var $log_box = jQuery('#messages');
 
 var message_log = '';
 
@@ -19,27 +23,28 @@ $form.on('submit', function(event) {
 		sender: 'client'
 	});
 
-	message_log += ('我: ' + $message_box.val() +'\n');
+	message_log = ('<div id="me"><b>我</b>: ' + $message_box.val() +'</div>');
 
 	$message_box.val('');
-	$log_box.val(message_log);
+	$log_box.append(message_log);
 
 });
+
 
 socket.on('message', function(message) {
 	console.log('New message: ' + message.text);
 
 	var prefix = '';
 	if (message.sender === 'server') {
-		prefix = '服务器';
+		prefix = '<div id="server"><b>服务器</b>';
 	} else if (message.sender === 'client') {
-		prefix = '对方';
+		prefix = '<div id="other"><b>对方</b>';
 	} else {
-		prefix = '未知';
+		prefix = '<b>未知</b>';
 	}
 
-	message_log += (prefix +': ' + message.text +'\n');
+	message_log = (prefix +': ' + message.text +'</div>');
 
-	$log_box.val(message_log);
+	$log_box.append(message_log);
 
 });

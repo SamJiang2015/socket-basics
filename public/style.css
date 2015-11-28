@@ -1,0 +1,30 @@
+
+#message-box {
+	width: 150px;
+	height: 25px;
+	font-size: 1em;
+}
+
+#messages {
+	width: 400px;
+	height: 400px;
+	border: 5px solid darkgray;
+}
+
+#server {
+	font-size: 1em;
+	font-style: italic;
+	color: lightgray;
+	padding: 0;
+}
+
+#me {
+	color: blue;
+	padding: 0;
+}
+
+#other {
+	color: red;
+	padding: 0;
+}
+
