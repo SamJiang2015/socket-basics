@@ -1,14 +1,9 @@
 
-#message-box {
-	width: 150px;
-	height: 25px;
-	font-size: 1em;
-}
 
 #messages {
-	width: 400px;
-	height: 400px;
+	height: 600px;
 	border: 5px solid darkgray;
+	overflow-y: scroll;
 }
 
 #server {
